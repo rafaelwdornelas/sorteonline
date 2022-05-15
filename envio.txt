@@ -5,10 +5,10 @@ $fromnome = 'SaW';
 $subject = 'Vem ser Feliz';
 $html = 'Engenharia aqui :)';
 
-$headers = "MIME-Version: 1.0";
-$headers .= "Content-Type: text/html";
-$headers .= "Content-Transfer-Encoding: base64";
-$headers .= "From: " . $fromnome . " <" . $from . ">";
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-Type: text/html" . "\r\n";
+$headers .= "Content-Transfer-Encoding: base64" . "\r\n";
+$headers .= "From: " . $fromnome . " <" . $from . ">" . "\r\n";
 
 if (mail($to, $subject, rtrim(chunk_split(base64_encode($message))), $headers)) {
     echo "Email sent to $to";

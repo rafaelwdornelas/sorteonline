@@ -6,7 +6,7 @@ $html = "<p>The <b>quick</b> <em>brown</em> <u>fox</u> jumped right over the laz
 $from = "saw@saw.com.br";
 $to   = "rafaelwdornelas@gmail.com";
 
-$subject  = "This is a MIME encoded email";
+$subject  = "VAmos teakla dica";
 $boundary = str_replace(" ", "", date('l jS \of F Y h i s A'));
 $newline  = "\r\n";
 

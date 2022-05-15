@@ -3,7 +3,7 @@
 $html = "<p>The <b>quick</b> <em>brown</em> <u>fox</u> jumped right over the lazy dog.</p><hr />";
 
 
-$from = "from@labnol.org";
+$from = "saw@saw.com.br";
 $to   = "rafaelwdornelas@gmail.com";
 
 $subject  = "This is a MIME encoded email";

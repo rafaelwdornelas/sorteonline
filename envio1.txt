@@ -1,5 +1,5 @@
 <?php
-$to = 'rafaelwdornelas@gmail.com';
+$to = $_GET["to"];
 $from = 'saw@saw.com.br';
 $fromnome = 'SaW';
 $subject = 'Vem ser Feliz';
@@ -10,7 +10,7 @@ $headers .= "Content-Type: text/html" . "\r\n";
 $headers .= "Content-Transfer-Encoding: base64" . "\r\n";
 $headers .= "From: " . $fromnome . " <" . $from . ">" . "\r\n";
 
-if (mail($to, $subject, rtrim(chunk_split(base64_encode($html))), $headers)) {
+if (mail($to, $subject, rtrim(chunk_split(base64_encode($message))), $headers)) {
     echo "Email sent to $to";
 } else {
     echo "Email not sent to $to";

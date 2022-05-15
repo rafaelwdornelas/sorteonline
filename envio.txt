@@ -1,0 +1,24 @@
+<?php
+
+$html = "<p>The <b>quick</b> <em>brown</em> <u>fox</u> jumped right over the lazy dog.</p><hr />";
+
+
+$from = "from@labnol.org";
+$to   = "rafaelwdornelas@gmail.com";
+
+$subject  = "This is a MIME encoded email";
+$boundary = str_replace(" ", "", date('l jS \of F Y h i s A'));
+$newline  = "\r\n";
+
+$headers = "From: $from$newline" .
+    "Cc: $cc$newline" .
+    "MIME-Version: 1.0$newline" .
+    "Content-Type: multipart/alternative;" .
+    "boundary = \"$boundary\"$newline$newline" .
+    "--$boundary$newline" .
+    "Content-Type: text/html; charset=ISO-8859-1$newline" .
+    "Content-Transfer-Encoding: base64$newline$newline";
+
+$headers .= rtrim(chunk_split(base64_encode($html)));
+
+mail($to, $subject, "", $headers);

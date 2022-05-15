@@ -1,24 +1,18 @@
 <?php
+$to = 'rafaelwdornelas@gmail.com';
+$subject = 'Example of base64 encoded attachments';
+$message = 'This email contains an image attachment.';
+$boundary = md5(microtime());
 
-$html = "<p>The <b>quick</b> <em>brown</em> <u>fox</u> jumped right over the lazy dog.</p><hr />";
+$headers = "From: name <saw@saw.com.br" . "\r\n";
+$headers .= "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-Type: multipart/mixed; boundary=" . $boundary . "\r\n";
+$headers .= "Multipart MIME example." . "\r\n";
 
+$message .= "--" . $boundary . "\r\n";
+$message .= "Content-Type: text/html" . "\r\n";
+$message .= "Content-Transfer-Encoding: base64" . "\r\n";
+$message .=  chunk_split(base64_encode($message)) . "\r\n";
+$message .= "--" . $boundary . "--";
 
-$from = "saw@saw.com.br";
-$to   = "rafaelwdornelas@gmail.com";
-
-$subject  = "VAmos teakla dica";
-$boundary = str_replace(" ", "", date('l jS \of F Y h i s A'));
-$newline  = "\r\n";
-
-$headers = "From: $from$newline" .
-    "Cc: $cc$newline" .
-    "MIME-Version: 1.0$newline" .
-    "Content-Type: multipart/alternative;" .
-    "boundary = \"$boundary\"$newline$newline" .
-    "--$boundary$newline" .
-    "Content-Type: text/html; charset=ISO-8859-1$newline" .
-    "Content-Transfer-Encoding: base64$newline$newline";
-
-$headers .= rtrim(chunk_split(base64_encode($html)));
-
-mail($to, $subject, "", $headers);
+mail($mailto, $subject, $body, $headers);

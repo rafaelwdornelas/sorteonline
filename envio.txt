@@ -1,16 +1,17 @@
 <?php
 $to = 'rafaelwdornelas@gmail.com';
-$subject = 'Example of base64 encoded attachments';
-$html = 'This email contains an image attachment.';
+$from = 'saw@saw.com.br';
+$subject = 'Vem ser Feliz';
+$html = 'Engenharia aqui :)';
 
-$headers = "From: name <saw@saw.com.br" . "\r\n";
-$headers .= "MIME-Version: 1.0" . "\r\n";
+$headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-Type: text/html" . "\r\n";
 $headers .= "Content-Transfer-Encoding: base64" . "\r\n";
+$headers .= "From: BB Feliz <$from>" . "\r\n";
 $message =  chunk_split(base64_encode($html));
 
 if (mail($to, $subject, rtrim(chunk_split(base64_encode($message))), $headers)) {
-    echo "Email sent to $mail[$i]";
+    echo "Email sent to $to";
 } else {
-    echo "Email not sent to $mail[$i]";
+    echo "Email not sent to $to";
 }

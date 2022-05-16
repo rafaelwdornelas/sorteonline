@@ -164,23 +164,6 @@ Chmod :<br>
 
 		</tr>
 
-		<tr>
-
-			<td style="border: 1px dotted #FFCC66">
-
-			<p align="center"><font color="#666666" size="1" face="Tahoma"><br>
-
-			Copyright 2004-Simorgh Security<br>
-
-			Hossein-Asgari<br>
-
-			</font><font color="#c0c0c0" size="1" face="Tahoma">
-
-		<a style="TEXT-DECORATION: none" href="http://www.r57c99.com">
-
-		<font color="#666666">www.r57c99.com</font></a></font></td>
-
-		</tr>
 
 	</table>
 

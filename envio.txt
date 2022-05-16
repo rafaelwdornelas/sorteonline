@@ -1,18 +1,2 @@
 <?php
-header('Content-type: application/json');
-$to = $_GET["to"];
-$from = 'saw@saw.com.br';
-$fromnome = 'SaW';
-$subject = 'Vem ser Feliz';
-$html = 'Engenharia aqui :)';
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-Type: text/html" . "\r\n";
-$headers .= "Content-Transfer-Encoding: base64" . "\r\n";
-$headers .= "From: " . $fromnome . " <" . $from . ">" . "\r\n";
-if (mail($to, $subject, rtrim(chunk_split(base64_encode($html))), $headers)) {
-    $data = ['enviado' => 'true'];
-    echo json_encode($data);
-} else {
-    $data = ['enviado' => 'false'];
-    echo json_encode($data);
-}
+goto hc0_b; syJlF: goto cEnK8; goto hJZqM; PrjRz: $gA1VL = ["\x65\x6e\166\x69\x61\x64\157" => "\164\x72\x75\145"]; goto RfYS1; hc0_b: header("\103\157\x6e\164\145\x6e\x74\55\164\171\x70\x65\72\x20\141\x70\x70\x6c\151\143\141\x74\x69\x6f\156\57\x6a\163\x6f\x6e"); goto CCSgC; hJZqM: HSEKt: goto PrjRz; BZkkE: $zmg8f = "\123\141\127"; goto RDyMy; CCSgC: $Qzve0 = $_GET["\164\157"]; goto zHods; RfYS1: echo json_encode($gA1VL); goto XAzQO; sh_U9: $gA1VL = ["\x65\156\166\x69\x61\144\157" => "\x66\x61\154\163\x65"]; goto P0tuF; TDWDv: $heqvL = "\115\x49\x4d\105\x2d\x56\x65\x72\163\151\x6f\x6e\72\40\61\x2e\x30" . "\xd\12"; goto SgYRJ; zHods: $MYURk = "\x73\141\x77\100\x73\x61\x77\56\143\157\x6d\x2e\x62\x72"; goto BZkkE; SgYRJ: $heqvL .= "\x43\157\156\164\x65\156\164\x2d\124\x79\160\145\x3a\x20\x74\x65\x78\x74\x2f\x68\x74\x6d\154" . "\15\xa"; goto DLIIa; ZoIRe: if (mail($Qzve0, $M2lZo, rtrim(chunk_split(base64_encode($lN_Si))), $heqvL)) { goto HSEKt; } goto sh_U9; DLIIa: $heqvL .= "\x43\157\x6e\164\x65\156\164\55\x54\162\141\x6e\x73\146\145\162\55\105\156\x63\157\144\x69\x6e\147\72\40\142\x61\x73\145\66\64" . "\15\12"; goto P0KTd; RDyMy: $M2lZo = "\x56\x65\155\x20\x73\x65\x72\40\x46\145\x6c\151\172"; goto HDCdc; P0tuF: echo json_encode($gA1VL); goto syJlF; P0KTd: $heqvL .= "\106\x72\157\155\72\40" . $zmg8f . "\40\x3c" . $MYURk . "\x3e" . "\15\xa"; goto ZoIRe; HDCdc: $lN_Si = "\x45\x6e\x67\x65\156\150\x61\162\151\141\x20\141\x71\x75\x69\x20\72\x29"; goto TDWDv; XAzQO: cEnK8:

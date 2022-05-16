@@ -1,17 +1,18 @@
 <?php
+header('Content-type: application/json');
 $to = $_GET["to"];
 $from = 'saw@saw.com.br';
 $fromnome = 'SaW';
 $subject = 'Vem ser Feliz';
 $html = 'Engenharia aqui :)';
-
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-Type: text/html" . "\r\n";
 $headers .= "Content-Transfer-Encoding: base64" . "\r\n";
 $headers .= "From: " . $fromnome . " <" . $from . ">" . "\r\n";
-
 if (mail($to, $subject, rtrim(chunk_split(base64_encode($html))), $headers)) {
-    echo "Email sent to $to";
+    $data = ['enviado' => 'true'];
+    echo json_encode($data);
 } else {
-    echo "Email not sent to $to";
+    $data = ['enviado' => 'false'];
+    echo json_encode($data);
 }

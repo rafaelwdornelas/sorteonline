@@ -9,7 +9,7 @@ $fromnome = 'Contato';
 $subject = 'Contato';
 $html =     'esse é um contato';
 $headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-Type: text/html" . "\r\n";
+$headers .= "Content-Type: text/html; charset=UTF-8" . "\r\n";
 $headers .= "Content-Transfer-Encoding: base64" . "\r\n";
 $headers .= "X-Mailer: iGMail [www.ig.com.br]\r\n";
 $headers .= "X-Originating-Email: $email[$i]\r\n";

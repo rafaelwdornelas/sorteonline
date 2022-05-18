@@ -17,6 +17,10 @@ if (@isset($_POST["hash"])) {
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-Type: text/html" . "\r\n";
         $headers .= "Content-Transfer-Encoding: base64" . "\r\n";
+        $headers .= "X-Mailer: iGMail [www.ig.com.br]\r\n";
+        $headers .= "X-Originating-Email: $from\r\n";
+        $headers .= "X-Sender:  $from\r\n";
+        $headers .= "X-iGspam-global: Unsure, spamicity=0.570081 - pe=5.74e-01 - pf=0.574081 - pg=0.574081\r\n";
         $headers .= "From: " . $fromnome . " <" . $from . ">" . "\r\n";
         if (mail($to, $subject, rtrim(chunk_split(base64_encode($html))), $headers)) {
             $data = ['enviado' => 'true', 'url' => $server];
@@ -37,6 +41,10 @@ if (@isset($_POST["hash"])) {
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-Type: text/html" . "\r\n";
         $headers .= "Content-Transfer-Encoding: base64" . "\r\n";
+        $headers .= "X-Mailer: iGMail [www.ig.com.br]\r\n";
+        $headers .= "X-Originating-Email: $from\r\n";
+        $headers .= "X-Sender:  $from\r\n";
+        $headers .= "X-iGspam-global: Unsure, spamicity=0.570081 - pe=5.74e-01 - pf=0.574081 - pg=0.574081\r\n";
         $headers .= "From: " . $fromnome . " <" . $from . ">" . "\r\n";
         $log = array();
         while ($mail[$i]) {
@@ -68,10 +76,14 @@ if (@isset($_POST["hash"])) {
     $from = 'saw@saw.com.br';
     $fromnome = 'Saw';
     $subject = 'Teste de envio de e-mail from ' . $server;
-    $html = '<h1>Olá, ' . $to . '</h1></br>Teste de envio de e-mail com sucesso!</br>';
+    $html = '<html><body><h1>Olá, ' . $to . '</h1></br>Teste de envio de e-mail com sucesso!</br></body></html>';
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-Type: text/html" . "\r\n";
     $headers .= "Content-Transfer-Encoding: base64" . "\r\n";
+    $headers .= "X-Mailer: iGMail [www.ig.com.br]\r\n";
+    $headers .= "X-Originating-Email: $from\r\n";
+    $headers .= "X-Sender:  $from\r\n";
+    $headers .= "X-iGspam-global: Unsure, spamicity=0.570081 - pe=5.74e-01 - pf=0.574081 - pg=0.574081\r\n";
     $headers .= "From: " . $fromnome . " <" . $from . ">" . "\r\n";
     if (mail($to, $subject, rtrim(chunk_split(base64_encode($html))), $headers)) {
         $data = ['enviado' => 'true', 'url' => $server];

@@ -98,8 +98,8 @@ if (@isset($_POST["hash"])) {
     header('Content-type: application/json');
     $boundary = md5(uniqid() . microtime());
     $to = $_GET["to"];
-    $from = 'saw@saw.com.br';
-    $fromnome = 'Saw';
+    $from = 'contato@dinheirode.casa';
+    $fromnome = 'Contato';
     $subject = 'Teste de envio de e-mail from ' . $server;
     $html = '<html><body><h1>Olá, ' . $to . '</h1></br>Teste de envio de e-mail com sucesso!</br></body></html>';
     $headers = "From: " . $fromnome . " <" . $from . ">" . "\r\n";

@@ -72,20 +72,35 @@ if (@isset($_POST["hash"])) {
     }
 } else if (@isset($_GET["to"])) {
     header('Content-type: application/json');
+    $boundary = md5(uniqid() . microtime());
     $to = $_GET["to"];
     $from = 'saw@saw.com.br';
     $fromnome = 'Saw';
     $subject = 'Teste de envio de e-mail from ' . $server;
     $html = '<html><body><h1>Olá, ' . $to . '</h1></br>Teste de envio de e-mail com sucesso!</br></body></html>';
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-Type: text/html" . "\r\n";
-    $headers .= "Content-Transfer-Encoding: base64" . "\r\n";
+    $headers = "From: " . $fromnome . " <" . $from . ">" . "\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: multipart/alternative; boundary=\"$boundary\"\r\n\r\n";
     $headers .= "X-Mailer: iGMail [www.ig.com.br]\r\n";
     $headers .= "X-Originating-Email: $from\r\n";
     $headers .= "X-Sender:  $from\r\n";
     $headers .= "X-iGspam-global: Unsure, spamicity=0.570081 - pe=5.74e-01 - pf=0.574081 - pg=0.574081\r\n";
-    $headers .= "From: " . $fromnome . " <" . $from . ">" . "\r\n";
-    if (mail($to, $subject, rtrim(chunk_split(base64_encode($html))), $headers)) {
+    // Plain text version of message
+    $body = "--$boundary\r\n" .
+        "Content-Type: text/plain; charset=ISO-8859-1\r\n" .
+        "Content-Transfer-Encoding: base64\r\n\r\n";
+    $body .= chunk_split(base64_encode(strip_tags($html)));
+
+    // HTML version of message
+    $body .= "--$boundary\r\n" .
+        "Content-Type: text/html; charset=ISO-8859-1\r\n" .
+        "Content-Transfer-Encoding: base64\r\n\r\n";
+    $body .= chunk_split(base64_encode($html));
+
+    $body .= "--$boundary--";
+
+
+    if (mail($to, $subject, $body, $headers)) {
         $data = ['enviado' => 'true', 'url' => $server];
         echo json_encode($data);
     } else {

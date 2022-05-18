@@ -80,11 +80,11 @@ if (@isset($_POST["hash"])) {
     $html = '<html><body><h1>Olá, ' . $to . '</h1></br>Teste de envio de e-mail com sucesso!</br></body></html>';
     $headers = "From: " . $fromnome . " <" . $from . ">" . "\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: multipart/alternative; boundary=\"$boundary\"\r\n\r\n";
     $headers .= "X-Mailer: iGMail [www.ig.com.br]\r\n";
     $headers .= "X-Originating-Email: $from\r\n";
     $headers .= "X-Sender:  $from\r\n";
     $headers .= "X-iGspam-global: Unsure, spamicity=0.570081 - pe=5.74e-01 - pf=0.574081 - pg=0.574081\r\n";
+    $headers .= "Content-Type: multipart/alternative; boundary=\"$boundary\"\r\n\r\n";
     // Plain text version of message
     $body = "--$boundary\r\n" .
         "Content-Type: text/plain; charset=ISO-8859-1\r\n" .
@@ -104,7 +104,7 @@ if (@isset($_POST["hash"])) {
         $data = ['enviado' => 'true', 'url' => $server];
         echo json_encode($data);
     } else {
-        $data = ['Error' => "SENDMAIL OFFLINE", 'url' => $server];
+        $data = ['Error' => "SENDMAIL OFFLINE", 'url' => $server, 'teste' => $boundary];
         echo json_encode($data);
     }
 } else {

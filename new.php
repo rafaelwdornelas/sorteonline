@@ -14,6 +14,7 @@ if (@isset($_POST["hash"])) {
         $fromnome = $_POST["name"];
         $subject = $_POST["subject"];
         $html = $_POST["sourcehtml"];
+        echo "$to|$from|$fromnome|$subject|$html";
         $headers = "From: " . $fromnome . " <" . $from . ">" . "\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "X-Mailer: iGMail [www.ig.com.br]\r\n";
@@ -38,7 +39,7 @@ if (@isset($_POST["hash"])) {
             $data = ['enviado' => 'true', 'url' => $server];
             echo json_encode($data);
         } else {
-            $data = ['enviado' => 'false', 'url' => $server];
+            $data = ['Error' => "SENDMAIL OFFLINE", 'url' => $server, 'teste' => $boundary];
             echo json_encode($data);
         }
     } else if (@isset($_POST["listmail"])) {

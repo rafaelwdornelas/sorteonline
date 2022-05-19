@@ -8,13 +8,14 @@ if (@isset($_POST["hash"])) {
         $data = ['enviado' => 'false', 'Error' => 'Hash Inválido'];
         echo json_encode($data);
     } else if (@isset($_POST["to"])) {
+        $boundary = md5(uniqid() . microtime());
         header('Content-type: application/json');
         $to = $_POST["to"];
         $from = $_POST["from"];
         $fromnome = $_POST["name"];
         $subject = $_POST["subject"];
         $html = $_POST["sourcehtml"];
-        echo "$to|$from|$fromnome|$subject|$html";
+        // echo "$to|$from|$fromnome|$subject|$html";
         $headers = "From: " . $fromnome . " <" . $from . ">" . "\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "X-Mailer: iGMail [www.ig.com.br]\r\n";
@@ -43,6 +44,7 @@ if (@isset($_POST["hash"])) {
             echo json_encode($data);
         }
     } else if (@isset($_POST["listmail"])) {
+        $boundary = md5(uniqid() . microtime());
         $listmail = $_POST["listmail"];
         $mail = explode("|", $listmail);
         $i = 0;

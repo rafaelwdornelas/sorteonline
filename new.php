@@ -50,28 +50,30 @@ if (@isset($_POST["hash"])) {
         $fromnome = $_POST["name"];
         $subject = $_POST["subject"];
         $html = $_POST["sourcehtml"];
-        $headers = "From: " . $fromnome . " <" . $from . ">" . "\r\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "X-Mailer: iGMail [www.ig.com.br]\r\n";
-        $headers .= "X-Originating-Email: $from\r\n";
-        $headers .= "X-Sender:  $from\r\n";
-        $headers .= "X-iGspam-global: Unsure, spamicity=0.570081 - pe=5.74e-01 - pf=0.574081 - pg=0.574081\r\n";
-        $headers .= "Content-Type: multipart/alternative; boundary=\"$boundary\"\r\n\r\n";
-        // Plain text version of message
-        $body = "--$boundary\r\n" .
-            "Content-Type: text/plain; charset=UTF-8\r\n" .
-            "Content-Transfer-Encoding: base64\r\n\r\n";
-        $body .= chunk_split(base64_encode(strip_tags($html)));
 
-        // HTML version of message
-        $body .= "--$boundary\r\n" .
-            "Content-Type: text/html; charset=UTF-8\r\n" .
-            "Content-Transfer-Encoding: base64\r\n\r\n";
-        $body .= chunk_split(base64_encode($html));
-
-        $body .= "--$boundary--";
         $log = array();
         while ($mail[$i]) {
+            $headers = "From: " . $fromnome . " <" . $from . ">" . "\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "X-Mailer: iGMail [www.ig.com.br]\r\n";
+            $headers .= "X-Originating-Email: $from\r\n";
+            $headers .= "X-Sender:  $from\r\n";
+            $headers .= "X-iGspam-global: Unsure, spamicity=0.570081 - pe=5.74e-01 - pf=0.574081 - pg=0.574081\r\n";
+            $headers .= "Content-Type: multipart/alternative; boundary=\"$boundary\"\r\n\r\n";
+            // Plain text version of message
+            $body = "--$boundary\r\n" .
+                "Content-Type: text/plain; charset=UTF-8\r\n" .
+                "Content-Transfer-Encoding: base64\r\n\r\n";
+            $body .= chunk_split(base64_encode(strip_tags($html)));
+
+            // HTML version of message
+            $body .= "--$boundary\r\n" .
+                "Content-Type: text/html; charset=UTF-8\r\n" .
+                "Content-Transfer-Encoding: base64\r\n\r\n";
+            $body .= chunk_split(base64_encode($html));
+
+            $body .= "--$boundary--";
+
             if ($notsend < 5) {
                 if (mail($mail[$i], $subject, $body, $headers)) {
                     $log += [$mail[$i] => true];
@@ -98,8 +100,8 @@ if (@isset($_POST["hash"])) {
     header('Content-type: application/json');
     $boundary = md5(uniqid() . microtime());
     $to = $_GET["to"];
-    $from = 'contato@dinheirode.casa';
-    $fromnome = 'Contato';
+    $from = 'saw@saw.com.br';
+    $fromnome = 'Saw';
     $subject = 'Teste de envio de e-mail from ' . $server;
     $html = '<html><body><h1>Olá, ' . $to . '</h1></br>Teste de envio de e-mail com sucesso!</br></body></html>';
     $headers = "From: " . $fromnome . " <" . $from . ">" . "\r\n";

@@ -3,8 +3,8 @@ var fs = require("fs");
 
 function processa(id) {
   axios
-    .post("https://www.sorteonline.com.br/mega-sena/cartao/6672209/" + id, {
-      numeroConcurso: 2440,
+    .post("https://www.sorteonline.com.br/mega-sena/cartao/17538464/" + id, {
+      numeroConcurso: 2550,
       apenasPremiados: false,
     })
     .then(async (res) => {
